@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Vite App</title>
+</head>
+<body>
+    <div id="app" class="">
+        <div
+            class="bg-gradient-to-br from-fuchsia-200 to-indigo-400 h-screen w-full flex items-center justify-center px-5">
+            <div class="product-card bg-white w-full max-w-3xl rounded-xl shadow-2xl p-8">
+                <div class="card flex flex-wrap md:flex-nowrap items-center justify-between gap-10">
+                    <div class="card-image w-full md:w-1/2 h-[300px]">
+                        <div class="product-image bg-center bg-no-repeat bg-cover h-full rounded-xl"></div>
+                    </div>
+                    <div class="card-desc w-full md:w-1/2">
+                        <div class="top-desc flex justify-between items-center mb-4">
+                            <button class="bg-gray-700 px-5 py-2 text-white text-xs rounded-full">
+                                FitLife
+                            </button>
+                            <h5 class="text-gray-500 text-sm">XV-383923810</h5>
+                        </div>
+
+                        <div class="title mb-4">
+                            <h1 class="font-bold text-3xl md:text-4xl text-gray-700 leading-snug">
+                                Montre Connectée FitLife Pro 5+
+                            </h1>
+                        </div>
+
+                        <div class="stars flex items-center mb-4">
+                            <div class="star-icon text-sm text-amber-300">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <div class="star-note ml-4 text-gray-500 text-sm">43 notes</div>
+                        </div>
+
+                        <div class="price mb-6">
+                            <h3 class="text-base text-gray-400 line-through">183,99 €</h3>
+                            <h3 class="text-4xl font-bold text-gray-800">149,99 €</h3>
+                        </div>
+
+                        <div class="basket flex gap-4">
+                            <button
+                                class="bg-[#477AEB] px-14 py-3 text-white text-sm rounded-md focus:outline-none focus:ring transition-all">
+                                AJOUTER AU PANIER
+                            </button>
+                            <button id="btn"
+                                class="hover:bg-blue-100 rounded-md transition-all focus:outline-none focus:ring">
+                                <i id="heart"
+                                    class="fa-regular fa-heart py-2 px-4 text-xl rounded-md text-[#477AEB] bg-[#477beb20]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<style>
+    .product-image {
+        background-image: url("product.jpg");
+    }
+</style>
+
+<script>
+    // Récupérer les éléments
+    const btn = document.querySelector("#btn");
+    const icon = document.querySelector("#heart");
+    const iconState = localStorage.getItem("stateicon") === "true";
+    if (iconState) {
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+    } else {
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+    }
+    btn.addEventListener("click", () => {
+        const baseicon = icon.classList.contains("fa-regular");
+        if (baseicon) {
+            icon.classList.remove("fa-regular");
+            icon.classList.add("fa-solid");
+        } else {
+            icon.classList.remove("fa-solid");
+            icon.classList.add("fa-regular");
+        }
+
+        localStorage.setItem("stateicon", baseicon);
+    });
+
+</script>
